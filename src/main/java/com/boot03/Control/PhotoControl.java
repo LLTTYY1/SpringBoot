@@ -27,6 +27,7 @@ public class PhotoControl {
             String originalFilename = photo.getOriginalFilename();
             photo.transferTo(new File("H:\\Photo\\" + originalFilename));
             System.out.println("你好");
+            System.out.println("我也好");
         }
         return "redirect:main.html";
     }
