@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot03.mapper.EmpMapper">
+
+    <resultMap id="BaseResultMap" type="com.boot03.pojo.Emp">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="ename" column="ename" jdbcType="VARCHAR"/>
+            <result property="deptid" column="deptId" jdbcType="INTEGER"/>
+            <result property="sal" column="sal" jdbcType="DOUBLE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,ename,deptId,
+        sal
+    </sql>
+    <delete id="deleteById">
+        delete
+        from emp
+        where id = #{id,jdbcType=NUMERIC}
+    </delete>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from emp
+    </select>
+    <insert id="insertSelective">
+        insert into emp
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="ename != null">ename,</if>
+            <if test="deptid != null">deptId,</if>
+            <if test="sal != null">sal,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=INTEGER},</if>
+            <if test="ename != null">#{ename,jdbcType=VARCHAR},</if>
+            <if test="deptid != null">#{deptid,jdbcType=INTEGER},</if>
+            <if test="sal != null">#{sal,jdbcType=DOUBLE},</if>
+        </trim>
+    </insert>
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from emp
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </select>
+    <update id="updateSelective">
+        update emp
+        <set>
+            <if test="ename != null">ename=#{ename,jdbcType=VARCHAR},</if>
+            <if test="deptid != null">deptId=#{deptid,jdbcType=NUMERIC},</if>
+            <if test="sal != null">sal=#{sal,jdbcType=DECIMAL},</if>
+        </set>
+        where id = #{id,jdbcType=NUMERIC}
+    </update>
+</mapper>

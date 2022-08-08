@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息</title>
+    <style>
+      body{
+        background-color: #7ea8a0;
+      }
+    </style>
+
+</head>
+<body>
+<table border="1" align="center" cellspacing="0" cellpadding="0" width="500" bgcolor="aqua">
+  <tr>
+    <td colspan="5" align="center">员工信息一览</td>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>员工姓名</td>
+    <td>员工部门号</td>
+    <td>员工薪资</td>
+    <td>操作<a th:href="@{/toadd}">添加</a></td>
+  </tr>
+  <tr th:each="list : ${List}">
+    <td th:text="${list.id}">id</td>
+    <td th:text="${list.ename}">姓名</td>
+    <td th:text="${list.deptid}">部门号</td>
+    <td th:text="${list.sal}">薪资</td>
+    <td>
+      <a th:href="@{'/delete/'+${list.id}}">删除</a>
+      <a th:href="@{'/update/'+${list.id}}">修改</a>
+    </td>
+  </tr>
+  <div ></div>
+</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+</head>
+<body>
+<form th:action="@{/add}" method="post">
+    <input type="hidden" name="id"><br/>
+    姓名:<input type="text" name="ename"><br/>
+    <label>部门号:</label>
+    <select name="deptid">
+        <option value="10" name="deptid">10</option>
+        <option value="20" name="deptid">20</option>
+        <option value="30" name="deptid">30</option>
+        <option value="40" name="deptid">40</option>
+    </select><br/>
+    薪资:<input type="text" name="sal"><br/>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
