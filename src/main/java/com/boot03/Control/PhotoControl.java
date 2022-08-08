@@ -26,8 +26,6 @@ public class PhotoControl {
             // 拿到原始的文件名字
             String originalFilename = photo.getOriginalFilename();
             photo.transferTo(new File("H:\\Photo\\" + originalFilename));
-            System.out.println("你好");
-            System.out.println("我也好");
         }
         return "redirect:main.html";
     }
